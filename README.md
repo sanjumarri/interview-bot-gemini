@@ -1,4 +1,4 @@
-
+```markdown
 # AI Interview Assistant 🤖
 
 This is an **AI-powered Interview Assistant** built with the **Gemini API (Google Generative AI)** that simulates technical interview scenarios and evaluates your responses.
@@ -16,7 +16,8 @@ This is an **AI-powered Interview Assistant** built with the **Gemini API (Googl
 - **Python**
 - **Flask**
 - **Gemini API** (Google Generative AI)
-- **HTML + CSS + JS** (frontend)
+- **Streamlit** (for UI)
+- **HTML + CSS + JS** (frontend assets)
 - **Bootstrap** (UI components)
 
 ## 🔐 Setup
@@ -27,11 +28,13 @@ This is an **AI-powered Interview Assistant** built with the **Gemini API (Googl
    cd interview-bot-gemini
    ```
 
-2. **Create and activate virtual environment:**
+2. **Create and activate the virtual environment:**
    ```
    python -m venv venv
-   source venv/bin/activate      # Linux/macOS
-   venv\Scripts\activate         # Windows
+   # For Linux/macOS
+   source venv/bin/activate
+   # For Windows
+   venv\Scripts\activate
    ```
 
 3. **Install dependencies:**
@@ -39,25 +42,47 @@ This is an **AI-powered Interview Assistant** built with the **Gemini API (Googl
    pip install -r requirements.txt
    ```
 
-4. **Add your API keys to a `.env` file:**
+4. **Add your API key to a `.env` file:**
    ```
    GEMINI_API_KEY=your_google_generative_ai_key
    ```
 
 5. **Run the app:**
-   ```
-   python app.py
-   ```
+   - For Flask backend (if used):  
+     ```
+     python app.py
+     ```
+   - For Streamlit UI frontend:  
+     ```
+     streamlit run ui/streamlit_app.py
+     ```
 
 ## 📁 Folder Structure
 
 ```
 interview-bot-gemini/
 │
-├── templates/         # HTML templates
-├── static/            # CSS/JS/images
-├── app.py             # Main Flask backend
-├── .env               # Environment variables (not pushed to GitHub)
+├── acp/                 # Access control & processing
+│   ├── message_format.py
+│   └── router.py
+│
+├── agents/              # Interview AI agents
+│   ├── coding_agent.py
+│   ├── hr_agents.py
+│   ├── job_role_agent.py
+│   └── scoring_agent.py
+│
+├── llm/                 # Language Model integration
+│   └── gemini_client.py
+│
+├── ui/                  # User Interface (Streamlit frontend)
+│   └── streamlit_app.py
+│
+├── static/              # CSS/JS/images (if used)
+├── templates/           # HTML templates (if Flask is used)
+├── app.py               # Main Flask backend (if used)
+├── requirements.txt     # Python dependencies
+├── .env                 # Environment variables (not pushed to GitHub)
 ├── .gitignore
 └── README.md
 ```
